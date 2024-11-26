@@ -12,3 +12,23 @@ CREATE TABLE users (
 INSERT INTO users (nombre, apellidos, email, password, logged, rol) VALUES 
   ('Dida',  'Castro', 'didaxample@gmail.com', '123456', 'false', 'admin'),
   ('Rubén', 'Castro', 'rubenexample@gmail.com', '123456', 'false', 'user')
+
+  
+CREATE TABLE articulos (
+    id SERIAL PRIMARY KEY,
+    cat_id INT,
+    titulo VARCHAR(100) NOT NULL,
+    autoria VARCHAR(100) NOT NULL,
+    contenido TEXT NOT NULL,
+    fecha_publicacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    imagen_url VARCHAR(255)
+);
+
+
+
+ALTER TABLE articulos
+ADD CONSTRAINT fk_articulos
+FOREIGN KEY (cat_id)
+REFERENCES categorias(id);
+
+

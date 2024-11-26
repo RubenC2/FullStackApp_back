@@ -24,6 +24,10 @@ CREATE TABLE articulos (
     imagen_url VARCHAR(255)
 );
 
+INSERT INTO articulos (cat_id, titulo, autoria, contenido, imagen_url) VALUES 
+  (1, 'Las emociones', 'Dida', 'aqui va el texto largo', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
+  (2, 'Las rabietas', 'Dida', 'aqui va el texto largo', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
+  (3, 'Las reuniones familiares', 'Dida', 'aqui va el texto largo', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg');
 
 
 ALTER TABLE articulos

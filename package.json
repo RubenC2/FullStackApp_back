@@ -1,0 +1,30 @@
+{
+  "name": "fullstackapp",
+  "version": "1.0.0",
+  "description": "FullStackApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenC2/FullStackApp.git"
+  },
+  "author": "Rubén Castro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RubenC2/FullStackApp/issues"
+  },
+  "homepage": "https://github.com/RubenC2/FullStackApp#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

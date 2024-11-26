@@ -5,7 +5,7 @@ CREATE TABLE users (
     apellidos VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    logged boolean,
+    logged boolean, DEFAULT 'false' CHECK (logged IN ('true', 'false')) 
     rol VARCHAR(10) DEFAULT 'user' CHECK (rol IN ('admin', 'user'))
 );
 

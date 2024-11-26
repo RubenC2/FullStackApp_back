@@ -1,4 +1,4 @@
-const userModel = require('../models/user.model');  // Importación del modelo Product
+const userModel = require('../models/user.model');  // Importación del modelo de la BBDD
 
 
 const getUsers = async (req, res) => {
@@ -40,7 +40,7 @@ const createUser = async (req, res) => {
 //ACTUALIZAR
 const updateUser = async (req, res) => {
     let user; 
-    if (req.body.email) {
+    if (req.query.email) {
         user = await userModel.updateUser({message: `Se ha modificado el usuario ${email}`}
         );
     }
@@ -50,27 +50,28 @@ const updateUser = async (req, res) => {
     res.status(200).json(user); 
 }
 
+
 // BORRAR
 const deleteUser = async (req, res) => {
     try {
-        const usuarioId = req.params.id
+        const email = req.body.email
 
-        if (!usuarioId) {
+        if (!email) {
             // Si no se proporciona un ID, devuelve un error
-            return res.status(400).json({ message: 'Se requiere un ID para eliminar user' });
+            return res.status(400).json({ message: 'Se requiere un email para eliminar user' });
         }
-        console.log(`Intentando borrar el usuario con ID: ${usuarioId}`);
+        console.log(`Intentando borrar el usuario con email: ${email}`);
 
         // Ejecuta la consulta SQL para eliminar user por ID
-        const result = await userModel.deleteUser(usuarioId);
+        const result = await userModel.deleteUser(email);
 
         if (result.affectedRows === 0) {
             // Si no se elimina ningún registro, responde con un mensaje apropiado
-            return res.status(404).json({ message: `No se encontró user con el ID: ${usuarioId}` });
+            return res.status(404).json({ message: `No se encontró user con el email: ${email}` });
         }
 
         // Si la eliminación es exitosa
-        res.status(200).json({ message: `Se ha borrado user con ID: ${usuarioId}` });
+        res.status(200).json({ message: `Se ha borrado user con email: ${email}` });
     } catch (error) {
         console.error('Error al eliminar user:', error);
         res.status(500).json({ message: 'Error al eliminar user' });

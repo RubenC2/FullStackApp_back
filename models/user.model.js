@@ -79,12 +79,13 @@ const updateUser = async (email) => {
     return result
 }
 
+
 // DELETE
-const deleteUser = async (usuarioId) => {
+const deleteUser = async (email) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.deleteUser, [usuarioId])
+        const data = await client.query(queries.deleteUser, [email])
         result = data.rows
         
     } catch (err) {
@@ -95,6 +96,12 @@ const deleteUser = async (usuarioId) => {
     }
     return result
 }
+
+// DELETE http://localhost:3000/user 
+// {
+//     "email": "userexample@gmail.com"
+// }
+
 
 const users = {
     getAllUsers,

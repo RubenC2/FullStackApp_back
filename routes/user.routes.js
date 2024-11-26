@@ -4,8 +4,8 @@ const express = require('express');
 
 router.get('/', userController.getUsers);
 router.post('/', userController.createUser);
-router.put('/', userController.updateUser); // no funciona
-router.delete('/:id', userController.deleteUser); 
+router.put('/', userController.updateUser); 
+router.delete('/', userController.deleteUser); 
 
 
 module.exports = router;

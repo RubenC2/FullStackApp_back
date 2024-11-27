@@ -3,9 +3,9 @@ const router = require('express').Router();
 const express = require('express');
 
 router.get('/', artController.getAllArticulos);
-// router.post('/', artController.createUser);
-// router.put('/', artController.updateUser); 
-// router.delete('/', artController.deleteUser); 
+router.post('/', artController.createArticulo);
+router.put('/', artController.updateArticulo); 
+router.delete('/', artController.deleteArticulo); 
 
 
 module.exports = router;

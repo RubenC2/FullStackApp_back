@@ -31,8 +31,8 @@ const userRoutes = require("./routes/user.routes")
 const artRoutes = require("./routes/art.routes")
 
 // Habilitacion de rutas
-app.use('/user', userRoutes);
-app.use('/articulos', artRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/articulos', artRoutes);
 
 
 //middleware for 404

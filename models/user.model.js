@@ -54,7 +54,7 @@ async function createUser({ nombre, apellidos, email, password }) {
         throw err; // 
     }
 }
-// POST http://localhost:3000/user 
+// POST http://localhost:3000/api/user 
 // {
 //     "nombre": "Dida",
 //     "apellidos": "Castro",

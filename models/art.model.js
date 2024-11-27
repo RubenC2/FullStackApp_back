@@ -1,12 +1,12 @@
-const queries = require('../queries/user.queries') // Queries SQL
+const queries = require('../queries/art.queries') // Queries SQL
 const pool = require('../config/db_pgsql')
 
 //GET ALL
-const getAllUsers = async () => {
+const getAllArticulos = async () => {
     let client, result;
     try {
         client = await pool.connect();
-        const data = await client.query(queries.getAllUsers)
+        const data = await client.query(queries.getAllArticulos)
         result = data.rows
     } catch (err) {
         console.log(err);
@@ -17,14 +17,13 @@ const getAllUsers = async () => {
     return result
 }
 
-// GET BY MAIL
-const getUserByEmail = async (email) => {
+const getArticuloByTitle = async (titulo) => {
     console.log();
 
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getUSerByEmail, [email])
+        const data = await client.query(queries.getArticuloByTitle, [titulo])
         result = data.rows
 
     } catch (err) {
@@ -37,37 +36,38 @@ const getUserByEmail = async (email) => {
 }
 
 // CREATE
-async function createUser({ nombre, apellidos, email, password }) {
+async function createArticulo({ cat_id, titulo, autoria, contenido, imagen_url }) {
     try {
 
-        if (!nombre || !apellidos || !email || !password) {
+        if (!cat_id || !titulo || !autoria || !contenido || !imagen_url) {
             console.error("Error: uno o más parámetros están undefined o null.");
             return null;
         }
         // const hashedPassword = await bcrypt.hash(password, 10);
-        const values = [nombre, apellidos, email, password,];
-        const result = await pool.query(queries.createUser, values);
+        const values = [cat_id, titulo, autoria, contenido, imagen_url];
+        const result = await pool.query(queries.createArticulo, values);
         return result.data
 
     } catch (err) {
-        console.error("Error ejecutando createUser:", err);
+        console.error("Error ejecutando createArticulo:", err);
         throw err; // 
     }
 }
-// POST http://localhost:3000/api/user 
+// POST http://localhost:3000/api/admin
 // {
-//     "nombre": "Dida",
-//     "apellidos": "Castro",
-//     "email": "Didaexample@gmail.com",
-//     "password": "123456"
+//     "cat_id": "1",
+//     "titulo": "Aquí el titulo",
+//     "autoria": "Dida Castro",
+//     "contenido": "Aquí el texto largo",
+//     "imagen_url": "Aquí la url de imagen"
 // }
 
 //UPDATE
-const updateUser = async (email) => {
+const updateArticulo = async (titulo) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.updateUser, [email])
+        const data = await client.query(queries.updateArticulo, [titulo])
         result = data.rows
         
     } catch (err) {
@@ -78,14 +78,13 @@ const updateUser = async (email) => {
     }
     return result
 }
-
 
 // DELETE
-const deleteUser = async (email) => {
+const deleteArticulo = async (titulo) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.deleteUser, [email])
+        const data = await client.query(queries.deleteArticulo, [titulo])
         result = data.rows
         
     } catch (err) {
@@ -97,18 +96,17 @@ const deleteUser = async (email) => {
     return result
 }
 
-// DELETE http://localhost:3000/user 
+// DELETE http://localhost:3000/api/articulos 
 // {
-//     "email": "userexample@gmail.com"
+//     "titulo": "Aquí el titulo"
 // }
 
-
-const users = {
-    getAllUsers,
-    getUserByEmail,
-    createUser,
-    updateUser,
-    deleteUser
+const articulos = {
+    getAllArticulos,
+    getArticuloByTitle,
+    createArticulo,
+    updateArticulo,
+    deleteArticulo 
 }
 
-module.exports = users;
+module.exports = articulos;

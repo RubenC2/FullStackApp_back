@@ -57,7 +57,7 @@ const deleteUser = async (req, res) => {
         const email = req.body.email
 
         if (!email) {
-            // Si no se proporciona un ID, devuelve un error
+            // Si no se proporciona un email, devuelve un error
             return res.status(400).json({ message: 'Se requiere un email para eliminar user' });
         }
         console.log(`Intentando borrar el usuario con email: ${email}`);

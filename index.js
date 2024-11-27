@@ -28,9 +28,11 @@ app.use(express.json());
 
 // Importa rutas
 const userRoutes = require("./routes/user.routes")
+const artRoutes = require("./routes/art.routes")
 
 // Habilitacion de rutas
-app.use('/user',userRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/articulos', artRoutes);
 
 
 //middleware for 404

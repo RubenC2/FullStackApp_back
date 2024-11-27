@@ -4,7 +4,9 @@ const port = 3000; // Puerto a usar por el servidor
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
-
+const cors = require('cors')
+ 
+app.use(cors())
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');
 

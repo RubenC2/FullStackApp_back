@@ -50,6 +50,33 @@ const updateSuscrip = async (req, res) => {
     res.status(200).json(suscrip); 
 }
 
+// BORRAR
+const deleteSuscrip = async (req, res) => {
+    try {
+        const email = req.body.email
+
+        if (!email) {
+            // Si no se proporciona un email, devuelve un error
+            return res.status(400).json({ message: 'Se requiere un email para eliminar suscrip' });
+        }
+        console.log(`Intentando borrar el usuario con email: ${email}`);
+
+        // Ejecuta la consulta SQL para eliminar user por ID
+        const result = await suscripModel.deleteSuscrip(email);
+
+        if (result.affectedRows === 0) {
+            // Si no se elimina ningún registro, responde con un mensaje apropiado
+            return res.status(404).json({ message: `No se encontró user con el email: ${email}` });
+        }
+
+        // Si la eliminación es exitosa
+        res.status(200).json({ message: `Se ha borrado user con email: ${email}` });
+    } catch (error) {
+        console.error('Error al eliminar user:', error);
+        res.status(500).json({ message: 'Error al eliminar user' });
+    }
+};
+
 module.exports = {
    getAllSuscripts,
    createSuscrip,

@@ -39,16 +39,18 @@ const createUser = async (req, res) => {
 
 //ACTUALIZAR
 const updateUser = async (req, res) => {
-    let user; 
-    if (req.query.email) {
-        user = await userModel.updateUser({message: `Se ha modificado el usuario ${email}`}
-        );
-    }
-    else {
-        user = await userModel.getAllUsers();
+    const updateUserData = req.body
+    let user;
+    try {
+        user = await userModel.updateUser(updateUserData) 
+    if (user === 0) {
+        return res.status(404).json({ error: 'User not found' });
     }
     res.status(200).json(user); 
-}
+} catch (error) {
+    console.error('Error al actualiar user:', error);
+    res.status(500).json({ message: 'Error al eliminar user' });
+}}  
 
 
 // BORRAR

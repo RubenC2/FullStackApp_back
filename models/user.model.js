@@ -63,11 +63,12 @@ async function createUser({ nombre, apellidos, email, password }) {
 // }
 
 //UPDATE
-const updateUser = async (email) => {
+const updateUser = async (updateUserData) => {
+    const {nombre, apellidos, password, email} = updateUserData
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.updateUser, [email])
+        const data = await client.query(queries.updateUser, [nombre, apellidos, password, email])
         result = data.rows
         
     } catch (err) {

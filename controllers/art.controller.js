@@ -41,11 +41,11 @@ const createArticulo = async (req, res) => {
 const updateArticulo = async (req, res) => {
     let articulo; 
     if (req.query.titulo) {
-        user = await artModel.updateArticulo({message: `Se ha modificado el artículo ${titulo}`}
+        articulo = await artModel.updateArticulo({message: `Se ha modificado el artículo ${titulo}`}
         );
     }
     else {
-        user = await artModel.getAllArticulos();
+        articulo = await artModel.getAllArticulos();
     }
     res.status(200).json(articulo); 
 }

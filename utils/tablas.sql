@@ -12,6 +12,7 @@ CREATE TABLE users (
 CREATE TABLE categorias (
     cat_id SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT NOT NULL,
     imagen_url VARCHAR(255)
 );
 
@@ -42,9 +43,9 @@ INSERT INTO users (nombre, apellidos, email, password, logged, rol) VALUES
   ('Rubén', 'Castro', 'rubenexample@gmail.com', '123456', 'false', 'user')
 
 INSERT INTO categorias (cat_id, nombre, imagen_url) VALUES 
-  (1, 'Fluyendo en familia', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
-  (2, 'Pareja conectada', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
-  (3, 'Todo empieza por ti', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg');
+  (1, 'Fluyendo en familia', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
+  (2, 'Pareja conectada', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
+  (3, 'Todo empieza por ti', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg');
 
 INSERT INTO articulos (cat_id, titulo, autoria, contenido, imagen_url) VALUES 
   (1, 'Las emociones', 'Dida', 'aqui va el texto largo', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),

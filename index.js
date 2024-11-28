@@ -32,12 +32,14 @@ app.use(express.json());
 const userRoutes = require("./routes/user.routes")
 const artRoutes = require("./routes/art.routes")
 const suscripRoutes = require("./routes/suscrip.routes")
+const categoriaRoutes = require("./routes/categoria.routes")
 
 
 // Habilitacion de rutas
 app.use('/api/user', userRoutes);
 app.use('/api/articulos', artRoutes);
 app.use('/api/suscrip', suscripRoutes);
+app.use('/api/categorias', categoriaRoutes);
 
 
 

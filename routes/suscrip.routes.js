@@ -4,7 +4,7 @@ const express = require('express');
 
 router.get('/', suscripController.getAllSuscripts);
 router.post('/', suscripController.createSuscrip);
-router.put('/', suscripController.updateSuscrip); 
+// router.put('/', suscripController.updateSuscrip); 
 // router.delete('/', artController.deleteArticulo); 
 
 

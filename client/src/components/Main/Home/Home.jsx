@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from './Card';
+import Card from './Card/Card';
+
 
 const Home = () => {
-  const [articulos, setArticulos] = useState([]); 
+  const [categorias, setCategorias] = useState([]); 
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null);     
 
   useEffect(() => {
-    const fetchArticulos = async () => {
+    const fetchCategorias = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/articulos`)
-        setArticulos(response.data.articulos); 
+        const response = await axios.get(`http://localhost:3000/api/categorias`)
+        setCategorias(response.data.categorias); 
         setLoading(false); 
       } catch (err) {
-        setError('Error al obtener los artículos');
+        setError('Error al obtener categorías');
         setLoading(false); 
       }
     };
 
-    fetchArticulos(); 
+    fetchCategorias(); 
   }, []); 
 
   
@@ -33,16 +34,25 @@ const Home = () => {
   }
 
   return (
-    <div className="artsContainer">
-      <h1 className="h1arts">ARTÍCULOS</h1>
-
-      {Array.isArray(articulos) && articulos.length > 0 ? (
-        articulos.map((item) => <Card key={item.id} articulo={item} />)
-      ) : (
-        <p>No hay artículos disponibles</p>
-      )}
-    </div>
+    <>
+    <h1 className="h1categs">Categorías</h1>
+    <div className="categContainer">
+        
+        {Array.isArray(categorias) && categorias.length > 0 ? (
+          categorias.map((item) => (
+            <div key={item.id}> 
+              <h2>{item.titulo}</h2> 
+              <p>{item.descripcion}</p>
+              <img className="imgCateg" src={item.imagen_url} alt={item.titulo} /> 
+            </div>
+          ))
+        ) : (
+          <p>No hay categorías disponibles</p>
+        )}
+      {/* <Card /> */}
+      </div>
+    </>
   );
 };
-
+  
 export default Home;

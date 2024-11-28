@@ -1,6 +1,6 @@
 const userModel = require('../models/user.model');  // Importación del modelo de la BBDD
 
-
+//GET
 const getUsers = async (req, res) => {
     let users;
 
@@ -22,6 +22,7 @@ const getUsers = async (req, res) => {
     }
 };
 
+//CREATE
 const createUser = async (req, res) => {
     const newUser = req.body;
 
@@ -37,7 +38,7 @@ const createUser = async (req, res) => {
     }
 };
 
-//ACTUALIZAR
+//UPDATE
 const updateUser = async (req, res) => {
     const updateUserData = req.body
     let user;
@@ -53,7 +54,7 @@ const updateUser = async (req, res) => {
 }}  
 
 
-// BORRAR
+// DELETE
 const deleteUser = async (req, res) => {
     try {
         const email = req.body.email

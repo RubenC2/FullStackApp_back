@@ -40,27 +40,11 @@ async function createSuscrip({ user_id, cat_id }) {
 //     "cat_id": "1"
 // }
 
-//UPDATE
-const updateSuscrip = async (email, cat_id) => {
-    let client, result;
-    try {
-        client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.updateSuscrip, [email, cat_id])
-        result = data.rows
-        
-    } catch (err) {
-        console.log(err);
-        throw err;
-    } finally {
-        client.release();
-    }
-    return result
-}
+
 
 const suscripciones = {
     getAllSuscripts,
-    createSuscrip,
-    updateSuscrip
+    createSuscrip
 }
 
 module.exports = suscripciones;

@@ -1,0 +1,19 @@
+@import "../utils/variables.scss";
+
+.h1categs {
+    background-color: $purple;
+    margin-top: 3px;
+
+}
+.categContainer {
+    background-color: $gold;
+    display: flex;
+    padding: 80px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.imgCateg {
+    width: 50%;
+}

@@ -1,14 +1,14 @@
 const artModel = require('../models/art.model');  // Importación del modelo de la BBDD
 
-//LEER
+//GET
 const getAllArticulos = async (req, res) => {
     let arts;
 
     try {
 
-        if (req.query.titulo) {
+        if (req.params.titulo) {
 
-            arts = await artModel.getArticuloByTitle(req.query.titulo);
+            arts = await artModel.getArticuloByTitle(req.params.titulo);
         } else {
 
             arts = await artModel.getAllArticulos();
@@ -22,7 +22,7 @@ const getAllArticulos = async (req, res) => {
     }
 };
 
-// CREAR
+// CREATE
 const createArticulo = async (req, res) => {
     const newArticulo = req.body;
 
@@ -37,7 +37,7 @@ const createArticulo = async (req, res) => {
     }
 };
 
-//ACTUALIZAR
+//UPDATE
 const updateArticulo = async (req, res) => {
     let articulo; 
     if (req.query.titulo) {
@@ -50,7 +50,7 @@ const updateArticulo = async (req, res) => {
     res.status(200).json(articulo); 
 }
 
-// BORRAR
+// DELETE
 const deleteArticulo = async (req, res) => {
     try {
         const titulo = req.body.titulo

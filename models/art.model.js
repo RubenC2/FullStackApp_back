@@ -17,6 +17,7 @@ const getAllArticulos = async () => {
     return result
 }
 
+//GET BY TITLE
 const getArticuloByTitle = async (titulo) => {
     console.log();
 

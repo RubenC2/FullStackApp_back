@@ -1,12 +1,17 @@
 @import "../utils/variables.scss";
 
 .h1categs {
-    background-color: $purple;
+    background-color: $primary-color;
     margin-top: 3px;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .categContainer {
-    background-color: $gold;
+    color: $gold;
+    background-color: $purple;
     display: flex;
     padding: 80px;
     flex-wrap: wrap;
@@ -25,5 +30,9 @@
     align-items: center;
     padding: 30px;
     border-radius: 12px;
-    border: solid, $purple;
+    border: solid, $secondary-color;
+}
+
+.categoriaContainer:hoover {
+    background-color: $secondary-color;
 }

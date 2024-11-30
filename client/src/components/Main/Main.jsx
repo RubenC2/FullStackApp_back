@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from "./Home";
 import Card from './Home/Card/Card';
+import ArtDetails from './Home/Card/ArtDetails';
 
 const Main = () => {
 
@@ -11,8 +12,8 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<Home />} /> 
         <Route path="/categoria/:cat_id" element={<Card />} />
-
-        {/* <Route path="/article/:articleId" element={<ArticleDetail />} /> */}
+        <Route path="/articulo/:id" element={<ArtDetails />} />
+        <Route path='/*' element={<Navigate to='/' />} />
       </Routes>
 
     </div>

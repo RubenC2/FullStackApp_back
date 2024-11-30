@@ -3,28 +3,28 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importa Link para la navegación
 
 const Home = () => {
-  const [categorias, setCategorias] = useState([]); 
-  const [loading, setLoading] = useState(true);  
-  const [error, setError] = useState(null);     
+  const [categorias, setCategorias] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/categorias');
         if (response.data && Array.isArray(response.data.categorias)) {
-          setCategorias(response.data.categorias); 
+          setCategorias(response.data.categorias);
         } else {
           setError('Datos no válidos');
         }
-        setLoading(false); 
+        setLoading(false);
       } catch (err) {
         setError('Error al obtener categorías');
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
-    fetchCategorias(); 
-  }, []); 
+    fetchCategorias();
+  }, []);
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -40,11 +40,11 @@ const Home = () => {
       <div className="categContainer">
         {categorias.length > 0 ? (
           categorias.map((item) => (
-            <div className="categoriaContainer" key={item.cat_id}> 
-              <h2>{item.titulo}</h2> 
+            <div className="categoriaContainer" key={item.cat_id}>
+              <h2>{item.titulo}</h2>
               <p>{item.descripcion}</p>
-              <img className="imgCateg" src={item.imagen_url} alt={item.titulo} /> 
-              <Link to={`/categoria/${item.cat_id}`}> 
+              <img className="imgCateg" src={item.imagen_url} alt={item.titulo} />
+              <Link to={`/categoria/${item.cat_id}`}>
                 <button>Ver artículos</button>
               </Link>
             </div>
@@ -56,6 +56,6 @@ const Home = () => {
     </>
   );
 };
-  
+
 export default Home;
 

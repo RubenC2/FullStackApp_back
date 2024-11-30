@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 
 const Card = () => {
+  const { cat_id } = useParams();
   const [articulos, setArticulos] = useState([]); // Artículos completos
   const [loading, setLoading] = useState(true);    // Estado de carga
   const [error, setError] = useState(null);        // Estado de error
   const [nombreart, setNombreArt] = useState([]);  // Resultados de la búsqueda
   const [titulo, setTitulo] = useState('');        // Estado para almacenar el título de búsqueda
 
-
+  console.log("cat_id desde la URL:", cat_id);
   useEffect(() => {
     const fetchArticulos = async () => {
       try {
@@ -24,8 +26,11 @@ const Card = () => {
 
     fetchArticulos();
   }, []);
+ 
 
-  
+  const filteredArticulos = articulos.filter(item => item.cat_id === parseInt(cat_id));
+  console.log("Artículos filtrados:", filteredArticulos);
+
   useEffect(() => {
     if (titulo.trim() === '') return;  
     const fetchArticulosNombre = async () => {
@@ -64,7 +69,7 @@ const Card = () => {
       <form onSubmit={handleSubmit}>
         <DebounceInput
           minLength={1}
-          debounceTimeout={1000}
+          debounceTimeout={3000}
           onChange={handleChange}  
           className='inputSearch'
           type="text"
@@ -86,8 +91,8 @@ const Card = () => {
       ) : (
         <div>
          
-          {articulos.length > 0 ? (
-            articulos.map((item) => (
+          {filteredArticulos.length > 0 ? (
+            filteredArticulos.map((item) => (
               <div key={item.id}>
                 <h1>{item.titulo}</h1>
                 <img src={item.imagen_url} alt={item.titulo} />

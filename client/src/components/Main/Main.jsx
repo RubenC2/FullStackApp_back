@@ -10,7 +10,8 @@ const Main = () => {
   
       <Routes>
         <Route path="/" element={<Home />} /> 
-        <Route path="/categoria/:catId" element={<Card />} />
+        <Route path="/categoria/:cat_id" element={<Card />} />
+
         {/* <Route path="/article/:articleId" element={<ArticleDetail />} /> */}
       </Routes>
 

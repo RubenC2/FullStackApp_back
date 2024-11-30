@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import ArtDetails from './ArtDetails';
 
@@ -13,14 +13,19 @@ const Card = () => {
   const [nombreart, setNombreArt] = useState([]);  // Resultados de la búsqueda
   const [titulo, setTitulo] = useState('');        // Estado para almacenar el título de búsqueda
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);  // Artículo seleccionado
-  const [mostrarCard, setMostrarCard] = useState(true); 
+  const [mostrarCard, setMostrarCard] = useState(true);
+  const [sortedArticulos, setSortedArticulos] = useState([]); // Artículos ordenados
 
   console.log("cat_id desde la URL:", cat_id);
   useEffect(() => {
     const fetchArticulos = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/articulos');
-        setArticulos(response.data.articulos);
+        const articulosOrdenados = response.data.articulos.sort((a, b) =>
+          new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion)  // Aquí los ordeno de más reciente a más antiguo
+        );
+        setArticulos(articulosOrdenados);
+        setSortedArticulos(articulosOrdenados); // Se muestran de entrada ordenados
         setLoading(false);
       } catch (err) {
         setError('Error al obtener los artículos');
@@ -33,7 +38,7 @@ const Card = () => {
 
 
   const filteredArticulos = articulos.filter(item => item.cat_id === parseInt(cat_id));
-  console.log("Artículos filtrados:", filteredArticulos);
+ 
 
   useEffect(() => {
     if (titulo.trim() === '') return;
@@ -60,6 +65,7 @@ const Card = () => {
     }
   };
 
+
   const handleChange = (e) => {
     setTitulo(e.target.value);
   };
@@ -67,7 +73,15 @@ const Card = () => {
   const handleArticuloClick = (articulo) => {
     // Al hacer click en un artículo, lo guardamos en el estado y ocultamos la lista de artículos
     setArticuloSeleccionado(articulo);
-    setMostrarCard(false);  // Ocultamos la lista de artículos
+    setMostrarCard(false);
+  };
+
+  // Función para ordenar los artículos de A-Z
+  const handleSort = () => {
+    const sorted = [...sortedArticulos].sort((a, b) =>
+      a.titulo.localeCompare(b.titulo)  // Ordenar alfabéticamente de A-Z por título
+    );
+    setSortedArticulos(sorted);
   };
 
   const handleVolver = () => {
@@ -76,11 +90,17 @@ const Card = () => {
     setMostrarCard(true);
   };
 
+  // Muestro las primeras 20 palabras
+  const previsualizarArticulo = (content) => {
+    const words = content.split(' ');
+    return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
+  };
+
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="card">
+    <>
       <h1 className="h1arts">ARTÍCULOS</h1>
       <form onSubmit={handleSubmit}>
         <DebounceInput
@@ -95,30 +115,36 @@ const Card = () => {
         <button type="submit">Buscar Artículo</button>
       </form>
 
-      {mostrarCard ? (
-        nombreart.length > 0 ? (
-          nombreart.map((item) => (
-            <div key={item.id} onClick={() => handleArticuloClick(item)}>
-              <h1>{item.titulo}</h1>
-              <img src={item.imagen_url} alt={item.titulo} />
-              <p>{item.contenido}</p>
-            </div>
-          ))
-        ) : filteredArticulos.length > 0 ? (
-          filteredArticulos.map((item) => (
-            <div key={item.id} onClick={() => handleArticuloClick(item)}>
-              <h1>{item.titulo}</h1>
-              <img src={item.imagen_url} alt={item.titulo} />
-              <p>{item.contenido}</p>
-            </div>
-          ))
+      <button onClick={handleSort}>Ordenar A-Z</button>
+
+      <div className="card">
+        {mostrarCard ? (
+          nombreart.length > 0 ? (
+            nombreart.map((item) => (
+              <div className="artContainer" key={item.id} onClick={() => handleArticuloClick(item)}>
+                <h1>{item.titulo}</h1>
+                <img src={item.imagen_url} alt={item.titulo} />
+                <p>{previsualizarArticulo(item.contenido)}</p>
+                <h4>LEER MÁS</h4>
+              </div>
+            ))
+          ) : filteredArticulos.length > 0 ? (
+            filteredArticulos.map((item) => (
+              <div className="artContainer" key={item.id} onClick={() => handleArticuloClick(item)}>
+                <h1>{item.titulo}</h1>
+                <img src={item.imagen_url} alt={item.titulo} />
+                <p>{previsualizarArticulo(item.contenido)}</p>
+                <h4>LEER MÁS</h4>
+              </div>
+            ))
+          ) : (
+            <p>No hay artículos disponibles</p>
+          )
         ) : (
-          <p>No hay artículos disponibles</p>
-        )
-      ) : (
-        <ArtDetails articulo={articuloSeleccionado} onVolver={handleVolver} />
-      )}
-    </div>
+          <ArtDetails articulo={articuloSeleccionado} onVolver={handleVolver} />
+        )}
+      </div>
+    </>
   );
 };
 

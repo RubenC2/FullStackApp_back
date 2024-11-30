@@ -14,24 +14,24 @@
     background-color: $purple;
     display: flex;
     padding: 80px;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+
+    .categoriaContainer {
+        flex: 1;  // Hace que cada caja ocupe el mismo espacio disponible
+        margin: 0 10px;  // Espaciado entre las cajas si es necesario
+        padding: 20px;  // Espaciado interno de cada caja
+        text-align: center;  // Alineación del contenido dentro de la caja
+        background-color: $secondary-color;
+        border-radius: 14px;
+}
 }
 
 .imgCateg {
     width: 50%;
 }
 
-.categoriaContainer {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    border-radius: 12px;
-    border: solid, $secondary-color;
-}
 
 .categoriaContainer:hoover {
     background-color: $secondary-color;

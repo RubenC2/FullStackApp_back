@@ -17,3 +17,13 @@
 .imgCateg {
     width: 50%;
 }
+
+.categoriaContainer {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 12px;
+    border: solid, $purple;
+}

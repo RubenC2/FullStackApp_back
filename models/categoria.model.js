@@ -18,13 +18,13 @@ const getAllCategorias = async () => {
 }
 
 //GET BY NAME
-const getCategoriaByName = async (name) => {
+const getCategoriaByName = async (nombre) => {
     console.log();
 
     let client, result;
     try {
-        client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getCategoriaByName, [name])
+        client = await pool.connect(); 
+        const data = await client.query(queries.getCategoriaByName, [nombre])
         result = data.rows
 
     } catch (err) {

@@ -1,9 +1,15 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from 'react';
+import Logo from './Logo/Logo';
+import Nav from "./Nav/Nav"
 
-class Header extends Component {
-  render() {
-    return <div>Header</div>;
-  }
-}
+const Header = () => {
 
-export default Header;
+  return (
+    <div>
+      <Logo />
+      <Nav />
+    </div>
+  );
+};
+
+export default Header; 

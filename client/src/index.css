@@ -23,6 +23,8 @@ a:hover {
 }
 
 body {
+  /* Para poder fijar el pie de página con posición absoluta */
+  position: relative;
   margin: 0;
   display: flex;
   place-items: center;

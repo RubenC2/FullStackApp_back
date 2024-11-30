@@ -6,9 +6,9 @@ const getAllCategorias = async (req, res) => {
 
     try {
 
-        if (req.body.nombre) {
+        if (req.params.nombre) {
 
-            categ = await categoriaModel.getCategoriaByName(req.body.nombre);
+            categ = await categoriaModel.getCategoriaByName(req.params.nombre);
         } else {
 
             categ = await categoriaModel.getAllCategorias();
@@ -22,6 +22,19 @@ const getAllCategorias = async (req, res) => {
     }
 };
 
+const getCategoriaByName = async (req, res) => {
+    let categ;
+
+    try {
+        categ = await categoriaModel.getCategoriaByName(req.params.nombre);
+        res.json({ categorias: categ });
+    } catch (err) {
+
+        res.status(500).json({ error: 'Error al obtener categorías: ' + err });
+    }
+};
+
 module.exports = {
-    getAllCategorias
+    getAllCategorias,
+    getCategoriaByName
 }

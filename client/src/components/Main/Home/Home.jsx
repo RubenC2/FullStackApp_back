@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from './Card/Card';
-
+import { Link } from 'react-router-dom'; // Importa Link para la navegación
 
 const Home = () => {
   const [categorias, setCategorias] = useState([]); 
@@ -11,8 +10,12 @@ const Home = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/categorias`)
-        setCategorias(response.data.categorias); 
+        const response = await axios.get('http://localhost:3000/api/categorias');
+        if (response.data && Array.isArray(response.data.categorias)) {
+          setCategorias(response.data.categorias); 
+        } else {
+          setError('Datos no válidos');
+        }
         setLoading(false); 
       } catch (err) {
         setError('Error al obtener categorías');
@@ -23,36 +26,36 @@ const Home = () => {
     fetchCategorias(); 
   }, []); 
 
-  
   if (loading) {
     return <div>Cargando...</div>;
   }
 
-  
   if (error) {
     return <div>{error}</div>;
   }
 
   return (
     <>
-    <h1 className="h1categs">Categorías</h1>
-    <div className="categContainer">
-        
-        {Array.isArray(categorias) && categorias.length > 0 ? (
+      <h1 className="h1categs">Categorías</h1>
+      <div className="categContainer">
+        {categorias.length > 0 ? (
           categorias.map((item) => (
-            <div key={item.id}> 
+            <div className="categoriaContainer" key={item.cat_id}> 
               <h2>{item.titulo}</h2> 
               <p>{item.descripcion}</p>
               <img className="imgCateg" src={item.imagen_url} alt={item.titulo} /> 
+              <Link to={`/categoria/${item.cat_id}`}> 
+                <button>Ver artículos</button>
+              </Link>
             </div>
           ))
         ) : (
           <p>No hay categorías disponibles</p>
         )}
-      {/* <Card /> */}
       </div>
     </>
   );
 };
   
 export default Home;
+

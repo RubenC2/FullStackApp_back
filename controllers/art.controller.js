@@ -5,21 +5,44 @@ const getAllArticulos = async (req, res) => {
     let arts;
 
     try {
-
-        if (req.params.titulo) {
-
-            arts = await artModel.getArticuloByTitle(req.params.titulo);
-        } else {
-
-            arts = await artModel.getAllArticulos();
-        }
-
-
+        arts = await artModel.getAllArticulos();
         res.json({ articulos: arts });
     } catch (err) {
 
         res.status(500).json({ error: 'Error al obtener articulos: ' + err });
     }
+};
+
+// Get by title
+const getArticuloByTitle = async (req, res) => {
+   
+    const titulo = req.params.titulo;  
+    let arts;
+    try {
+
+        if (titulo) {
+            arts = await artModel.getArticuloByTitle(titulo);
+            res.json(arts);
+        } else {
+            res.status(400).json({ error: 'Introduce título' }); 
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Error al obtener articulos: ' + err });
+    }
+};
+
+// Get by cat_id
+const getArticulosBycat_id = async (req, res) => {
+    const cat_id = req.params.cat_id;
+    let arts;
+    try {
+        if (cat_id) {
+            arts = await artModel.getArticulosBycat_id(cat_id);
+            res.json({ articulos: arts });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Error al obtener articulos: ' + err });
+    };
 };
 
 // CREATE
@@ -39,15 +62,15 @@ const createArticulo = async (req, res) => {
 
 //UPDATE
 const updateArticulo = async (req, res) => {
-    let articulo; 
+    let articulo;
     if (req.query.titulo) {
-        articulo = await artModel.updateArticulo({message: `Se ha modificado el artículo ${titulo}`}
+        articulo = await artModel.updateArticulo({ message: `Se ha modificado el artículo ${titulo}` }
         );
     }
     else {
         articulo = await artModel.getAllArticulos();
     }
-    res.status(200).json(articulo); 
+    res.status(200).json(articulo);
 }
 
 // DELETE
@@ -79,6 +102,8 @@ const deleteArticulo = async (req, res) => {
 
 module.exports = {
     getAllArticulos,
+    getArticulosBycat_id,
+    getArticuloByTitle,
     createArticulo,
     updateArticulo,
     deleteArticulo

@@ -17,14 +17,30 @@ const getAllArticulos = async () => {
     return result
 }
 
-//GET BY TITLE
+//GET ALL
 const getArticuloByTitle = async (titulo) => {
-    console.log();
+    let client, result;
+    try {
+        client = await pool.connect();
+        const data = await client.query(queries.getArticuloByTitle, [`%${titulo}%`])
+        result = data.rows
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+
+//GET BY CAT_ID
+const getArticulosBycat_id = async (cat_id) => {
 
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getArticuloByTitle, [titulo])
+        const data = await client.query(queries.getArticulosBycat_id, [cat_id])
         result = data.rows
 
     } catch (err) {
@@ -104,6 +120,7 @@ const deleteArticulo = async (titulo) => {
 
 const articulos = {
     getAllArticulos,
+    getArticulosBycat_id,
     getArticuloByTitle,
     createArticulo,
     updateArticulo,

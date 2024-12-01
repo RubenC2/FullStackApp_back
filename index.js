@@ -4,16 +4,16 @@ const port = 3000; // Puerto a usar por el servidor
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
-const cors = require('cors')
+const cors = require('cors');
+const path = require('path');
  
 app.use(cors())
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');
 
 
-// Logger, formato de lo que sale por terminal
 app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(express.static("public")); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
+app.use(express.static(path.join(__dirname, 'build'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
 
 // MiddlewareS                      MANAGE 404 ERROR
 const manage404 = require("./middlewares/manage404");

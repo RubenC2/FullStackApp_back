@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Importa Link para la navegación
+import { Link } from 'react-router-dom'; 
+import { DNA } from 'react-loader-spinner'; 
 
 const Home = () => {
   const [categorias, setCategorias] = useState([]);
@@ -27,7 +28,16 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div>
+       <DNA
+      visible={true}
+      height="80"
+      width="80"
+      ariaLabel="dna-loading"
+      wrapperStyle={{}}
+      wrapperClass="dna-wrapper"
+      />
+    </div>;
   }
 
   if (error) {
@@ -41,9 +51,9 @@ const Home = () => {
         {categorias.length > 0 ? (
           categorias.map((item) => (
             <div className="categoriaContainer" key={item.cat_id}>
-              <h2>{item.titulo}</h2>
+              <h2>{item.nombre}</h2>
               <p>{item.descripcion}</p>
-              <img className="imgCateg" src={item.imagen_url} alt={item.titulo} />
+              <img className="imgCateg" src={item.imagen_url} alt={item.nombre} />
               <Link to={`/categoria/${item.cat_id}`}>
                 <button>Ver artículos</button>
               </Link>

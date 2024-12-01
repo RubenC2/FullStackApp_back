@@ -1,38 +1,99 @@
 @import "../utils/variables.scss";
 
+// Título principal de la sección de categorías
 .h1categs {
-    background-color: $primary-color;
-    margin-top: 3px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  background-color: $primary-color;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: $white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px;
 }
 
+// Contenedor de categorías
 .categContainer {
-    color: $gold;
-    background-color: $purple;
-    display: flex;
-    padding: 80px;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    .categoriaContainer {
-        flex: 1;  // Hace que cada caja ocupe el mismo espacio disponible
-        margin: 0 10px;  // Espaciado entre las cajas si es necesario
-        padding: 20px;  // Espaciado interno de cada caja
-        text-align: center;  // Alineación del contenido dentro de la caja
-        background-color: $secondary-color;
-        border-radius: 14px;
-}
+  color: $gold;
+  background-color: $purple;
+  display: flex;
+  padding: 80px;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px; // Agregar espacio entre las tarjetas
 }
 
-.imgCateg {
-    width: 50%;
+// Contenedor individual de cada categoría
+.categoriaContainer {
+  flex: 1;  // Hace que cada caja ocupe el mismo espacio disponible
+  margin: 0 10px;  // Espaciado entre las cajas
+  padding: 20px;  // Espaciado interno de cada caja
+  text-align: center;  // Alineación del contenido dentro de la caja
+  background-color: $secondary-color;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra ligera
+  display: flex;
+  flex-direction: column;  // Coloca los elementos de la caja en una columna
+  justify-content: space-between;  // Espacio entre el contenido de la caja
+  height: 100%;  // Asegura que todas las tarjetas tengan la misma altura
+
+  // Efecto hover en la tarjeta
+  &:hover {
+    transform: translateY(-5px); // Levanta la tarjeta al pasar el ratón
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); // Aumenta la sombra al hacer hover
+    background-color: darken($secondary-color, 5%); // Hace que el fondo se oscurezca al hacer hover
+  }
+
+  // Estilo del título de la categoría
+  h2 {
+    font-size: 1.5rem;
+    color: $white;
+    margin-bottom: 10px;
+  }
+
+  // Descripción de la categoría
+  p {
+    font-size: 1rem;
+    color: $white;
+    margin-bottom: 20px;
+  }
+
+  // Estilo para la imagen de la categoría
+  .imgCateg {
+    width: 100%;  // Asegura que la imagen ocupe todo el ancho del contenedor
+    height: 200px; // Fija una altura uniforme para todas las imágenes
+    object-fit: cover; // Hace que la imagen se recorte si es necesario
+    border-radius: 5px; // Bordes redondeados en la imagen
+    margin-bottom: 15px; // Espacio debajo de la imagen
+  }
+
+  // Estilo del botón
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: $gold; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($purple, 10%); // Hace que el color del botón se oscurezca al hacer hover
+    }
+  }
 }
 
-
-.categoriaContainer:hoover {
-    background-color: $secondary-color;
+// Estilo para el botón "Ver artículos"
+.categoriaContainer a {
+  text-decoration: none;  // Elimina el subrayado del enlace
 }
+
+// Modificación de hover para el contenedor de categoría
+.categoriaContainer:hover {
+  background-color: darken($secondary-color, 10%);
+}
+

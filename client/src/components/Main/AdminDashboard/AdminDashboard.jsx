@@ -12,21 +12,15 @@ const ArticuloAdd = () => {
   const [contenido, setContenido] = useState("");
   const [imagenUrl, setImagenUrl] = useState("");
   const [message, setMessage] = useState("");
-
+  const editor = useRef(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
 
-    // Verificar que el contenido no esté vacío
-    if (!contenido || contenido.trim() === "") {
-      setMessage("El contenido no puede estar vacío.");
-      return;
-    }
 
-    // Verificar que los demás campos no estén vacíos
-    if (!catId || !titulo || !autoria || !imagenUrl) {
-      setMessage("Todos los campos deben ser completados.");
+    if (!catId || !titulo || !autoria || !contenido || !imagenUrl) {
+      setMessage("Faltan campos por completar.");
       return;
     }
 
@@ -100,8 +94,10 @@ const ArticuloAdd = () => {
         <div>
           <label>Contenido:</label>
           <JoditEditor
+            ref={editor}
             value={contenido}
-            onChange={(newContent) => setContenido(newContent)}
+            onBlur={(newContent) => setContenido(newContent)} 
+            onChange={(newContent) => {}}  
             config={{ editorCssClass: "my-editor" }} />
 
         </div>

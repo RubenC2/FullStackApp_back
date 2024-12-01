@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../../../public/img/banner.png";
+
 
 const About = () => {
   return (
@@ -16,7 +16,7 @@ const About = () => {
         Me apasiona leer, si te despistas estaré leyendo algún artículo, un libro o las etiquetas que tenga delante. También me gusta el chocolate de +80% y aprender cosas nuevas.
       </p>
       <div className="banner-container">
-        <img className="about-banner" src={banner} alt="Banner" />
+        <img className="about-banner" src="/img/banner.png" alt="Banner" />
       </div>
     </div>
   );

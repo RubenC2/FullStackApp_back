@@ -5,6 +5,7 @@ import Card from './Home/Card/Card';
 import ArtDetails from './Home/Card/ArtDetails';
 import About from './About/About';
 import Contact from './Contact/Contact';
+import Asesorias from './Asesorias/Asesorias';
 
 const Main = () => {
 
@@ -17,6 +18,7 @@ const Main = () => {
         <Route path="/articulo/:id" element={<ArtDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/asesorias" element={<Asesorias />} />
         <Route path='/*' element={<Navigate to='/' />} />
       </Routes>
 

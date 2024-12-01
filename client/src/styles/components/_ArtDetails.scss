@@ -1,0 +1,74 @@
+@import "../utils/variables.scss"; // Importa tus variables de colores y tipografía
+
+.art-details {
+  max-width: 800px;  // Limitar el ancho máximo para que no se vea demasiado ancho
+  margin: 30px auto;  // Centrar el contenido con un margen vertical
+  padding: 20px;
+  background-color: $white;  // Fondo blanco para un contraste limpio
+  border-radius: 12px;  // Bordes redondeados para suavizar la interfaz
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  // Sombra suave para crear un efecto de elevación
+  font-family: $font-primary;  // Usa la tipografía principal de tu proyecto
+  
+  h1 {
+    font-size: 2.5rem;
+    color: $primary-color;  // Color principal de texto
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: $secondary-color;  // Color más suave para el autor
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $purple;  // Color más neutro para el texto
+    line-height: 1.6;
+    margin-bottom: 20px;  // Separación entre párrafos
+  }
+
+  img {
+    max-width: 100%;  // Imagen ajustada al 100% del contenedor
+    height: auto;  // Mantener la relación de aspecto de la imagen
+    border-radius: 8px;  // Bordes redondeados en la imagen
+    margin-bottom: 20px;  // Separación después de la imagen
+  }
+
+  button {
+    padding: 12px 20px;
+    background-color: $primary-color;  // Usar color principal para el botón
+    color: $white;  // Color blanco para el texto
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: $secondary-color;  // Cambiar a un color secundario en hover
+      transform: translateY(-2px);  // Efecto de elevación al pasar el ratón
+    }
+
+    &:focus {
+      outline: none;  // Eliminar el contorno del botón al hacer foco
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .art-details {
+    padding: 15px;  // Menos padding en pantallas pequeñas
+    h1 {
+      font-size: 2rem;  // Hacer el título más pequeño en pantallas pequeñas
+    }
+    h4 {
+      font-size: 1rem;  // Reducir el tamaño de autor
+    }
+    button {
+      width: 100%;  // Hacer el botón de ancho completo en dispositivos pequeños
+    }
+  }
+}

@@ -20,10 +20,10 @@ const Nav = () => {
 
       <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
         <ul>
-          <li><Link to="/home" onClick={toggleMenu}>Home</Link></li>
-          <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
-          <li><Link to="/services" onClick={toggleMenu}>Services</Link></li>
-          <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
+          <li><Link to="/home" onClick={toggleMenu}>Categorías</Link></li>
+          <li><Link to="/about" onClick={toggleMenu}>Sobre mí</Link></li>
+          <li><Link to="/services" onClick={toggleMenu}>Asesorías</Link></li>
+          <li><Link to="/contact" onClick={toggleMenu}>Contacto</Link></li>
         </ul>
       </nav>
     </div>

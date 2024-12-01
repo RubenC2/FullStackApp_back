@@ -1,7 +1,7 @@
 @import "../utils/variables.scss";
 
 footer {
-    /* No es necesario usar position: absolute ni fixed */
+   
     background: $white;
     padding: 20px 0;
     text-align: center;
@@ -28,7 +28,7 @@ footer {
             text-decoration: none;
 
             &:hover {
-                color: #f39c12; // Cambia el color de los iconos al pasar el mouse
+                color: $gold; 
             }
         }
     }

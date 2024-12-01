@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import ArtDetails from './ArtDetails';
+import { DNA } from 'react-loader-spinner'; 
+
 
 const Card = () => {
   const { cat_id } = useParams();
@@ -76,13 +78,10 @@ const Card = () => {
     setMostrarCard(false);
   };
 
-  // Función para ordenar los artículos de A-Z
   const handleSort = () => {
-    const sorted = [...sortedArticulos].sort((a, b) =>
-      a.titulo.localeCompare(b.titulo)  // Ordenar alfabéticamente de A-Z por título
-    );
-    setSortedArticulos(sorted);
+    setSortedArticulos(sortedArticulos.sort((a, b) => a.titulo.localeCompare(b.titulo)));
   };
+  
 
   const handleVolver = () => {
     // Al hacer click en "Volver", vuelve a la vista de todos los artículos
@@ -96,13 +95,20 @@ const Card = () => {
     return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
   };
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <div> <DNA
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="dna-loading"
+  wrapperStyle={{}}
+  wrapperClass="dna-wrapper"
+  /></div>;
   if (error) return <div>{error}</div>;
 
   return (
     <>
       <h1 className="h1arts">ARTÍCULOS</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="formSearch" onSubmit={handleSubmit}>
         <DebounceInput
           minLength={1}
           debounceTimeout={3000}

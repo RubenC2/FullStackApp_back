@@ -1,18 +1,18 @@
-import React from "react";
-import retrato from "../../../../public/img/Dida.png"; 
+import React from "react";  
 
 const Asesorias = () => {
   return (
     <>
     <div className="asesorias">
-      <h1>¿Quieres una asesoría conmigo?</h1>
+      <h2>¿Quieres una asesoría conmigo?</h2>
 
       <div className="fotoDida">
-        <img className="fotoRetrato" src={retrato} alt="Dida" />
+       
+        <img className="fotoRetrato" src="/img/Dida.png" alt="Foto de Dida" />
       </div>
 
       <div className="descripcionAsesoria">
-        <p>Ofrezco asesoría sobre:</p>
+        <p>Ofrezco asesorías sobre:</p>
         <ul>
           <li>(Re)conexión de la pareja.</li>
           <li>Mejorar la comunicación y acuerdos de la pareja.</li>
@@ -40,4 +40,5 @@ const Asesorias = () => {
     </>
   );
 };
+
 export default Asesorias;

@@ -1,0 +1,36 @@
+@import "../utils/variables.scss";
+
+// Estilos para la clase personalizada del editor
+.my-editor {
+    color: $purple !important;  // Color de texto
+    background-color: $white !important; // Fondo blanco
+    font-size: 14px !important;  // Tamaño de fuente
+    
+    // Personalizar la fuente
+    font-family: Arial, sans-serif;
+  
+    // Anidación de estilos para elementos internos del editor
+    .jodit-wysiwyg {
+      // Personalización de los elementos dentro del editor
+      color: $primary-color;
+      background-color: $white;
+      font-size: 14px;
+    }
+  
+    // Estilo para los controles del editor (por ejemplo, barra de herramientas)
+    .jodit-toolbar {
+      background-color: #f4f4f4;  // Fondo de la barra de herramientas
+    }
+  
+    // Estilo para los botones
+    .jodit-toolbar button {
+      background-color: $secondary-color;
+      color: $white;
+      border: none;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: $gold;
+      }
+    }
+  }

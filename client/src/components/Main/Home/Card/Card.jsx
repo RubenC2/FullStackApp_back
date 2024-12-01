@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import ArtDetails from './ArtDetails';
 import { DNA } from 'react-loader-spinner'; 
+import ReactHtmlParser from 'html-react-parser'; 
 
 
 const Card = () => {
@@ -92,7 +93,8 @@ const Card = () => {
   // Muestro las primeras 20 palabras
   const previsualizarArticulo = (content) => {
     const words = content.split(' ');
-    return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
+    const preview = words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
+    return ReactHtmlParser(preview);
   };
 
   if (loading) return <div> <DNA

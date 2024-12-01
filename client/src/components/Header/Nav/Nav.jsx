@@ -22,7 +22,7 @@ const Nav = () => {
         <ul>
           <li><Link to="/home" onClick={toggleMenu}>Categorías</Link></li>
           <li><Link to="/about" onClick={toggleMenu}>Sobre mí</Link></li>
-          <li><Link to="/services" onClick={toggleMenu}>Asesorías</Link></li>
+          <li><Link to="/asesorias" onClick={toggleMenu}>Asesorías</Link></li>
           <li><Link to="/contact" onClick={toggleMenu}>Contacto</Link></li>
         </ul>
       </nav>

@@ -10,8 +10,6 @@ app.use(cors())
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');
 
-// Servir los archivos estáticos de React
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Logger, formato de lo que sale por terminal
 app.use(express.json()); // Middleware para parsear el body de las peticiones

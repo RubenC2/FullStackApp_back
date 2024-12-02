@@ -79,8 +79,24 @@ const Card = ({categName}) => {
     setMostrarCard(false);
   };
 
+  // const handleSort = () => {
+  //   setSortedArticulos(sortedArticulos.sort((a, b) => a.titulo - b.titulo));
+  // };
+
   const handleSort = () => {
-    setSortedArticulos(sortedArticulos.sort((a, b) => a.titulo - b.titulo));
+    // Crear una copia del array y ordenarla
+    const sortedABC = [...sortedArticulos].sort((a, b) => {
+      if (a.titulo < b.titulo) {
+        return -1;  // a va antes que b
+      }
+      if (a.titulo > b.titulo) {
+        return 1;  // b va antes que a
+      }
+      return 0;  // Son iguales
+    });
+  
+    // Actualizar el estado 
+    setSortedArticulos(sortedABC);
   };
   
 

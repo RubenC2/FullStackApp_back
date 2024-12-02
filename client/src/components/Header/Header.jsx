@@ -6,6 +6,7 @@ const Header = () => {
 
   return (
     <div className="header">
+      <div className="empty"/>
       <Logo />
       <Nav />
     </div>

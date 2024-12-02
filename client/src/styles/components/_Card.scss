@@ -37,6 +37,7 @@
 
 .h1arts {
   text-align: center;
+  color: $white;
 }
 
 .formSearch {
@@ -49,4 +50,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.readmore {
+  color: $white;
 }

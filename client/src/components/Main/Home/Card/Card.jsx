@@ -11,10 +11,10 @@ import ReactHtmlParser from 'html-react-parser';
 const Card = ({categName}) => {
   const { cat_id } = useParams();
   const [articulos, setArticulos] = useState([]); // Artículos completos
-  const [loading, setLoading] = useState(true);    // Estado de carga
-  const [error, setError] = useState(null);        // Estado de error
+  const [loading, setLoading] = useState(true);    // Carga
+  const [error, setError] = useState(null);        // Error
   const [nombreart, setNombreArt] = useState([]);  // Resultados de la búsqueda
-  const [titulo, setTitulo] = useState('');        // Estado para almacenar el título de búsqueda
+  const [titulo, setTitulo] = useState('');        // Título de búsqueda
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);  // Artículo seleccionado
   const [mostrarCard, setMostrarCard] = useState(true);
   const [sortedArticulos, setSortedArticulos] = useState([]); // Artículos ordenados

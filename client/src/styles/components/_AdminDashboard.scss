@@ -1,14 +1,21 @@
 @import "../utils/variables.scss";
 
+#root > div:nth-child(2) > div > form > div:nth-child(4) > div > textarea {
+    color: black;
+}
+
 .my-editor {
     color: black !important;  
     background-color: $white !important; 
     font-size: 14px !important;  
     font-family: Arial, sans-serif;
-
     display: block;
     margin: 0 auto;
 
+    p {
+        color: black;
+      }
+     
     .jodit-wysiwyg {
       color: black !important;  
       background-color: $white !important;

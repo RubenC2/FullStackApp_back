@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
 import { DNA } from 'react-loader-spinner'; 
+import Card from './Card/Card';
 
 const Home = () => {
   const [categorias, setCategorias] = useState([]);
@@ -57,6 +58,7 @@ const Home = () => {
               <Link to={`/categoria/${item.cat_id}`}>
                 <button>Ver artículos</button>
               </Link>
+              {/* <categName={item.nombre} /> */}
             </div>
           ))
         ) : (

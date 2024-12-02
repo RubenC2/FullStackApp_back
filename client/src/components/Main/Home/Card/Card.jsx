@@ -8,7 +8,7 @@ import { DNA } from 'react-loader-spinner';
 import ReactHtmlParser from 'html-react-parser'; 
 
 
-const Card = () => {
+const Card = ({categName}) => {
   const { cat_id } = useParams();
   const [articulos, setArticulos] = useState([]); // Artículos completos
   const [loading, setLoading] = useState(true);    // Estado de carga
@@ -64,7 +64,7 @@ const Card = () => {
     if (titulo.trim()) {
       setNombreArt([]);
     } else {
-      alert('Por favor, ingresa un título para la búsqueda');
+      alert('Introduce un título para buscar');
     }
   };
 
@@ -79,8 +79,24 @@ const Card = () => {
     setMostrarCard(false);
   };
 
+  // const handleSort = () => {
+  //   setSortedArticulos(sortedArticulos.sort((a, b) => a.titulo - b.titulo));
+  // };
+
   const handleSort = () => {
-    setSortedArticulos(sortedArticulos.sort((a, b) => a.titulo.localeCompare(b.titulo)));
+    // Crear una copia del array y ordenarla
+    const sortedABC = [...sortedArticulos].sort((a, b) => {
+      if (a.titulo < b.titulo) {
+        return -1;  // a va antes que b
+      }
+      if (a.titulo > b.titulo) {
+        return 1;  // b va antes que a
+      }
+      return 0;  // Son iguales
+    });
+  
+    // Actualizar el estado 
+    setSortedArticulos(sortedABC);
   };
   
 
@@ -110,6 +126,7 @@ const Card = () => {
   return (
     <>
       <h1 className="h1arts">ARTÍCULOS</h1>
+      {/* <h2>{categName}</h2> */}
       <form className="formSearch" onSubmit={handleSubmit}>
         <DebounceInput
           minLength={1}

@@ -92,7 +92,7 @@ const ArticuloAdd = () => {
 
 
         <div>
-          <label>Contenido:</label>
+          <label></label>
           <JoditEditor
             ref={editor}
             value={contenido}

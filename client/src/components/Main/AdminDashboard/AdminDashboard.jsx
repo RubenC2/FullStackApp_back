@@ -54,12 +54,12 @@ const ArticuloAdd = () => {
 
   return (
     <div>
-      <h1>Crear Artículo</h1>
+      <h1 className="create">Crear Artículo</h1>
 
       <form onSubmit={handleSubmit}>
 
         <div>
-          <label>Categoria ID:</label>
+          <label className="create">Categoria ID:</label>
           <input
             type="text"
             value={catId}
@@ -70,7 +70,7 @@ const ArticuloAdd = () => {
 
 
         <div>
-          <label>Título:</label>
+          <label className="create">Título:</label>
           <input
             type="text"
             value={titulo}
@@ -81,7 +81,7 @@ const ArticuloAdd = () => {
 
 
         <div>
-          <label>Autoría:</label>
+          <label className="create">Autoría:</label>
           <input
             type="text"
             value={autoria}
@@ -104,7 +104,7 @@ const ArticuloAdd = () => {
 
 
         <div>
-          <label>Imagen URL:</label>
+          <label className="create">Imagen URL:</label>
           <input
             type="text"
             value={imagenUrl}

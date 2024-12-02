@@ -159,7 +159,7 @@ const Card = ({categName}) => {
                 <h1>{item.titulo}</h1>
                 <img src={item.imagen_url} alt={item.titulo} />
                 <p>{previsualizarArticulo(item.contenido)}</p>
-                <h4>LEER MÁS</h4>
+                <h4 className="readmore">LEER MÁS</h4>
               </div>
             ))
           ) : (

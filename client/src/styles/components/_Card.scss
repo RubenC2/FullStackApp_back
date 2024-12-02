@@ -7,14 +7,12 @@
   background-color: $primary-color;
   width: 300px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Sombra para darle un efecto de tarjeta elevada */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    /* Efecto hover para elevar la tarjeta */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    /* Sombra más intensa al pasar el ratón */
+
   }
 
   h1 {
@@ -29,15 +27,11 @@
 
   img {
     width: 100%;
-    /* Asegura que la imagen ocupe todo el ancho del contenedor */
     height: 200px;
-    /* Fija una altura constante para las imágenes */
     object-fit: cover;
-    /* Hace que la imagen cubra el área del contenedor sin distorsionarse */
     border-radius: 5px;
-    /* Bordes redondeados en la imagen */
     margin-bottom: 15px;
-    /* Espacio debajo de la imagen */
+   
   }
 }
 
@@ -46,7 +40,6 @@
 }
 
 .formSearch {
-  margin-right: 200px;
   padding: 20px;
   display: flex;
   justify-content: flex-end;

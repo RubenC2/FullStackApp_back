@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/RubenC2/FullStackApp#readme",
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

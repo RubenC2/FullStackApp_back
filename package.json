@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "npm run build && node index.js",
-    "build": "cd client && npm run build && cp -r client/dist/* ./public/"
+    "start": "npm install && npm run build && node index.js", 
+    "build": "cd client && npm install && npm run build && cp -r client/dist/* ./public/",  
+    "dev": "npm run build && node index.js" 
   },
   "repository": {
     "type": "git",

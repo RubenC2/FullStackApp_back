@@ -4,14 +4,9 @@
   "description": "FullStackApp",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "clientinstall": "npm install --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "feed_db": "node seed/seeds.js",
-    "deploy": "concurrently \"npm run server\" \"npm run client\"",
-    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "start": "node index.js",
+    "build": "cd client && npm install && npm run build", 
+    "deploy": "npm run build && node index.js" 
   },
   "repository": {
     "type": "git",

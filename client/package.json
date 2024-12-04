@@ -24,6 +24,7 @@
     "react-hook-form": "^7.53.2",
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^7.0.1",
+    "react-scripts": "^5.0.1",
     "sass": "^1.81.0",
     "uuid": "^11.0.3"
   },

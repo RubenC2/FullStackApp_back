@@ -14,7 +14,7 @@ app.use(cors())
 
 
 app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(express.static(path.join(__dirname, 'client/build'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
+app.use(express.static(path.join(__dirname, 'public'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
 
 // MiddlewareS                      MANAGE 404 ERROR
 const manage404 = require("./middlewares/manage404");
@@ -47,7 +47,7 @@ app.use('/api/categorias', categoriaRoutes);
 
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
 app.listen(port, () => {

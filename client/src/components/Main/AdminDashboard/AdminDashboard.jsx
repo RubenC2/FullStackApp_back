@@ -35,7 +35,7 @@ const ArticuloAdd = () => {
 
     try {
 
-      const response = await axios.post("http://localhost:3000/api/articulos", articuloData);
+      const response = await axios.post("{process.env.REACT_APP_API_URL}/api/articulos", articuloData);
       console.log("Artículo guardado:", response.data);
 
       setMessage("Artículo creado exitosamente!");

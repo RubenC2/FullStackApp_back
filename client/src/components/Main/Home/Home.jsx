@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get('{process.env.REACT_APP_API_URL}/api/categorias');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/categorias`);
         if (response.data && Array.isArray(response.data.categorias)) {
           setCategorias(response.data.categorias);
         } else {

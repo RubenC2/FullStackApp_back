@@ -4,10 +4,14 @@
   "description": "FullStackApp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node index.js",
-    "build": "cd client && npm install && npm run build",
-    "dev": "npm run build && node index.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "feed_db": "node seed/seeds.js",
+    "deploy": "concurrently \"npm run server\" \"npm run client\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,7 @@
   "homepage": "https://github.com/RubenC2/FullStackApp#readme",
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

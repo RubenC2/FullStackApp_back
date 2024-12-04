@@ -1,6 +1,6 @@
 const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
-const port = 3000; // Puerto a usar por el servidor
+const port = process.env.PORT || 3000; // Puerto a usar por el servidor
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -50,5 +50,5 @@ app.use('/api/categorias', categoriaRoutes);
 app.use("*", manage404);
 
 app.listen(port, () => {
-    console.log(`Example app listening on http://localhost:${port}`);
-});
+    console.log(`Servidor escuchando en el puerto ${port}`);
+  });

@@ -7,7 +7,9 @@ dotenv.config();
 const cors = require('cors');
 const path = require('path');
  
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173'  // Permite solicitudes solo desde el frontend
+  }));
 
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');

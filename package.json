@@ -4,9 +4,9 @@
   "description": "FullStackApp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "build": "cd client && npm install && npm run build", 
+    "deploy": "npm run build && node index.js" 
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/RubenC2/FullStackApp#readme",
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -27,7 +29,8 @@
     "morgan": "^1.10.0",
     "pg": "^8.13.1",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "vite": "^6.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

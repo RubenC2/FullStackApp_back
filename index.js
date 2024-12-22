@@ -1,6 +1,6 @@
 const express = require("express"); // Importamos el paquete express
 const app = express(); // Inciializar servidor con express
-const port = 3000; // Puerto a usar por el servidor
+const port = process.env.PORT || 3000; // Puerto a usar por el servidor
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -16,7 +16,7 @@ app.use(cors({
 
 
 app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(express.static(path.join(__dirname, 'build'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
+app.use(express.static(path.join(__dirname, 'client', 'dist'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
 
 // MiddlewareS                      MANAGE 404 ERROR
 const manage404 = require("./middlewares/manage404");
@@ -48,9 +48,10 @@ app.use('/api/categorias', categoriaRoutes);
 
 
 
-//middleware for 404
-app.use("*", manage404);
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  });
 
 app.listen(port, () => {
-    console.log(`Example app listening on http://localhost:${port}`);
-});
+    console.log(`Servidor escuchando en el puerto ${port}`);
+  });

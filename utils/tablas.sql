@@ -42,7 +42,7 @@ INSERT INTO users (nombre, apellidos, email, password, logged, rol) VALUES
   ('Dida',  'Castro', 'didaxample@gmail.com', '123456', 'false', 'admin'),
   ('Rubén', 'Castro', 'rubenexample@gmail.com', '123456', 'false', 'user')
 
-INSERT INTO categorias (cat_id, nombre, imagen_url) VALUES 
+INSERT INTO categorias (cat_id, nombre, descripcion, imagen_url) VALUES 
   (1, 'Fluyendo en familia', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
   (2, 'Pareja conectada', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg'),
   (3, 'Todo empieza por ti', 'descripcion aqui', 'https://thumbs.dreamstime.com/b/retrato-de-gato-dom%C3%A9stico-curl-americano-adulto-contra-fondo-negro-195877559.jpg');

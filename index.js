@@ -10,8 +10,8 @@ const path = require('path');
 //const connection = require('./config/db_mysql');
  
 app.use(cors({
-    origin: 'http://localhost:5173'  // Permite solicitudes solo desde el frontend
-  }));
+    origin: '*' // Permite solicitudes solo desde el frontend ('http://localhost:5173')
+}))
 
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');

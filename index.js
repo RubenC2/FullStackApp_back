@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cors = require('cors');
 const path = require('path');
+
+//const connection = require('./config/db_mysql');
  
 app.use(cors({
     origin: 'http://localhost:5173'  // Permite solicitudes solo desde el frontend

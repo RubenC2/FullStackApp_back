@@ -6,17 +6,19 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cors = require('cors');
 const path = require('path');
+
+//const connection = require('./config/db_mysql');
  
 app.use(cors({
-    origin: 'http://localhost:5173'  // Permite solicitudes solo desde el frontend
-  }));
+    origin: '*' // Permite solicitudes solo desde el frontend ('http://localhost:5173')
+}))
 
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('./swagger.json');
 
 
 app.use(express.json()); // Middleware para parsear el body de las peticiones
-app.use(express.static(path.join(__dirname, 'client', 'dist'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
+// app.use(express.static(path.join(__dirname, 'client', 'dist'))); //Middleware para servir archivos estáticos de front. CSS, JS, assets.
 
 // MiddlewareS                      MANAGE 404 ERROR
 const manage404 = require("./middlewares/manage404");
@@ -48,9 +50,9 @@ app.use('/api/categorias', categoriaRoutes);
 
 
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-  });
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+//   });
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);

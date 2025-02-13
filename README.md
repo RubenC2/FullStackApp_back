@@ -2,6 +2,8 @@
 
 Es una aplicación web sobre crianza consciente que ofrece un blog categorizado con artículos, información sobre la autora, servicios de asesoría y un panel de administración para publicar artículos.
 
+[Puedes verlo aquí funcionando](https://bewustopvoeden.netlify.app/)
+
 <u>Tabla de Contenidos</u>
 
 :seedling: Descripción

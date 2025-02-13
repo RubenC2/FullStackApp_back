@@ -1,6 +1,6 @@
 # :deciduous_tree: :baby: Bewust Opvoeden (FullStackApp)
 
-Es una aplicación web sobre crianza consciente que ofrece un blog categorizado con artículos, información sobre la autora, servicios de asesoría y un panel de administración para publicar artículos.
+Es una aplicación web en desarrollo sobre crianza consciente que ofrece un blog categorizado con artículos, información sobre la autora, servicios de asesoría y un panel de administración para publicar artículos.
 
 [Puedes verlo aquí funcionando](https://bewustopvoeden.netlify.app/)
 
